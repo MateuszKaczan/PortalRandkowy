@@ -29,6 +29,7 @@ namespace PortalRandkowy.API
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));    // baza danych 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +39,9 @@ namespace PortalRandkowy.API
             {
                 app.UseDeveloperExceptionPage();    //ekran informacyjny o tym co poszlo zle
             }
+
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()); // w celu umozliwienia komunikacji
             app.UseMvc();
         }
     }
