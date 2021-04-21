@@ -26,7 +26,6 @@ namespace PortalRandkowy.API.Data
                 return null;
 
             return user;
-
         }
 
         public async Task<User> Register(User user, string password)
